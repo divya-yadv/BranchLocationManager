@@ -44,6 +44,20 @@ export class AuthService {
         })
       );
   }
+  autoLogin() {
+    const userData: {
+      email: string;
+    } = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (!userData || userData.email == '') {
+      return;
+    }
+
+    const loadedUser = new User(
+      userData.email,
+    );
+    this.user.next(loadedUser);
+    
+  }
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
