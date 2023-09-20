@@ -1,0 +1,19 @@
+<nav style="background-color: #00599c;"class="navbar navbar-default m-0">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a style=" color: white;"href="#" class="navbar-brand">Fastenal</a>
+    </div>
+    <ul class="nav navbar-nav" *ngIf="!isAuthenticated" >
+      <li routerLinkActive="active" *ngIf="!isAuthenticated">
+         <a routerLink="/auth" style="cursor: pointer; color: white; ">
+            Authenticate
+         </a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="margin-right:50px;">
+      <li *ngIf="isAuthenticated">
+        <a style="cursor: pointer; color: white;" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

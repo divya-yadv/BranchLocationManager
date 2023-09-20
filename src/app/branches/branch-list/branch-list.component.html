@@ -1,0 +1,38 @@
+
+<div class="row mt-5 mb-5">
+  <div class="col-xs-12">
+    <a class="btn btn-primary" (click)="onNewBranch()">New Branch </a>
+  </div>
+  <!--<div class="col-xs-12">
+    <a class="btn btn-primary" (click)="onBranch()">Branch </a>
+  </div>-->
+</div>
+<div class="row">
+  <table class="table table-dark table-striped">
+    <thead class="thead-dark">
+      <tr class=" mt-5">
+        <th scope="col">Id</th>
+        <th scope="col">BU_CODE5</th>
+        <!--<th scope="col">STATUS</th>
+        <th scope="col">OPENED_AT</th>-->
+        <th scope="col">ADDRESS</th>
+        <!--<th scope="col">CITY</th>-->
+        <!--<th scope="col">STATE_NAME</th>-->
+        <!--<th scope="col">COUNTRY_NAME</th>-->
+        <th scope="col">CURRENCY</th>
+        <th scope="col">PHONE</th>
+        <!--<th scope="col">BUSINESS_HOURS</th>-->
+        <th scope="col">LATITUDE</th>
+        <th scope="col">LONGITUDE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr app-branch-item
+          *ngFor=" let branch of branches;
+                           let i=index;"
+          [branch]="branch"
+          [index]="i">
+      </tr>
+    </tbody>
+  </table>
+</div>

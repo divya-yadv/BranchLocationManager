@@ -1,0 +1,23 @@
+
+
+<td scope="col">{{branch.id}}</td>
+<td scope="col">{{branch.bU_CODE5}}</td>
+
+
+<td scope="col">
+  {{branch.address}},{{branch.city}},{{branch.statE_NAME}},{{branch.countrY_NAME }}
+</td>
+<!--<td scope="col">{{branch.CITY}}</td>-->
+<!--<td scope="col">{{branch.STATE_NAME}}</td>-->
+<!--<td scope="col">{{branch.COUNTRY_NAME}}</td>-->
+<td scope="col">{{branch.currency}}</td>
+<td scope="col">{{branch.phone}}</td>
+<!--<td scope="col">{{branch.businesS_HOURS}}</td>-->
+<td scope="col" class="text-start">{{branch.latitude}}</td>
+<td scope="col" class="text-start">{{branch.longitude}}</td>
+<td scope="col"><button class="btn btn-primary btn-sm" style="cursor: pointer;" (click)="onEditBranch()">Edit</button></td>
+<td scope="col"><button class="btn btn-danger btn-sm" style="cursor: pointer;" (click)="onDeleteBranch()">Delete</button></td>
+
+
+
+

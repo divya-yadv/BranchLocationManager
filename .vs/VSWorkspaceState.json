@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\branches",
+    "\\src\\app\\branches\\branch-edit",
+    "\\src\\app\\branches\\branch-item",
+    "\\src\\app\\branches\\branch-list",
+    "\\src\\app\\header",
+    "\\src\\app\\shared"
+  ],
+  "SelectedNode": "\\src\\app\\branches\\branch-list\\branch-list.component.ts",
+  "PreviewInSolutionExplorer": false
+}
