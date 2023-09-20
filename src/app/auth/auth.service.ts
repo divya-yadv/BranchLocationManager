@@ -15,10 +15,12 @@ export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   constructor(private http: HttpClient, private router: Router) { }
 
-  signup(email: string, password: string) {
-    return this.http.post<AuthResponseData>('', {
+  signup(email: string, password: string, firstName: string, lastName: string) {
+    return this.http.post<AuthResponseData>('https://localhost:7133/api/Account/register', {
       email: email,
-      password:password
+      password: password,
+      firstName: firstName,
+      lastName: lastName
     })
       .pipe(
         catchError(this.handleError),
