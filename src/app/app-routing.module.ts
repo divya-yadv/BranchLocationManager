@@ -7,10 +7,11 @@ import { AuthGuard } from "./auth/auth.guard";
 
 const appRoutes: Routes = [
   {
-    path: '', component: BranchesComponent, pathMatch:'full'},
+    path: '', canActivate: [AuthGuard], component: BranchesComponent, pathMatch: 'full'
+  },
   { path: 'auth', component: AuthComponent },
-    { path: 'branches/new', component: BranchEditComponent },
-  { path: 'branches/:id/edit', component: BranchEditComponent }
+  { path: 'branches/new', canActivate: [AuthGuard] , component: BranchEditComponent },
+  { path: 'branches/:id/edit', canActivate: [AuthGuard], component: BranchEditComponent }
  
 ];
 @NgModule({

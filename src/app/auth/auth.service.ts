@@ -6,7 +6,6 @@ import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 export interface AuthResponseData {
-  Id: number;
   email: string;
   registered?: boolean;
 }
@@ -32,7 +31,7 @@ export class AuthService {
     );
   }
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('', {
+    return this.http.post<AuthResponseData>('https://localhost:7133/api/Account/login', {
       email: email,
       password: password
     })
@@ -46,7 +45,7 @@ export class AuthService {
       );
   }
   logout() {
-    this.user.next({ email: '' });
+    this.user.next(null);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
   }
