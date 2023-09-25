@@ -14,29 +14,31 @@ export class BranchService  {
   setBranches(branches: Branch[]) {
     this.branches = branches;
     this.branchesChanged.next(this.branches.slice());
+   
+
   }
   getBranches() {
     return this.branches.slice();
   }
 
-  getBranch(id: number) {
-    return this.branches.filter(branch => branch.id == id )[0];
+  getBranch(buCode5: string) {
+    return this.branches.filter(branch => branch.buCode5 == buCode5 )[0];
   }
 
   addBranch(Branch: Branch) {
     this.branches.push(Branch);
     this.branchesChanged.next(this.branches.slice());
+    console.log(this.branches);
   }
 
-  updateBranch(id: number, newBranch: Branch) {
-    let index = this.branches.findIndex(branch => branch.id == id);
+  updateBranch(buCode5: string, newBranch: Branch) {
+    let index = this.branches.findIndex(branch => branch.buCode5 == buCode5);
     this.branches[index] = newBranch;
     this.branchesChanged.next(this.branches.slice());
-    //console.log(this.branches[index]);
   }
 
-  deleteBranch(id: number) {
-    let index = this.branches.findIndex(branch => branch.id == id);
+  deleteBranch(buCode5: string) {
+    let index = this.branches.findIndex(branch => branch.buCode5 == buCode5);
     this.branches.splice(index, 1);
     this.branchesChanged.next(this.branches.slice());
   }

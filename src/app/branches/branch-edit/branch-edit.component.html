@@ -15,26 +15,15 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="id">Id</label>
-            <input type="number"
-                   id="id"
-                   formControlName="id"
-                   class="form-control">
+            <label for="bu_code">BU_CODE5</label>
+            <input type="text"
+                   id="bu_code"
+                   formControlName="buCode5"
+                   class="form-control" [disabled]="editMode">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="bu_code">BU_CODE5</label>
-            <input type="text"
-                   id="bu_code"
-                   formControlName="bu_CODE5"
-                   class="form-control">
-          </div>
-        </div>
-      </div>
-      <!--<div class="row">
         <div class="col-xs-12">
           <div class="form-group">
             <label for="status">STATUS</label>
@@ -48,14 +37,14 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="opened_at">OPENED_AT</label>
+            <label for="openedDt">OPENED_DT</label>
             <input type="text"
-                   id="opened_at"
-                   formControlName="opened_at"
+                   id="openedDt"
+                   formControlName="openedDt"
                    class="form-control">
           </div>
         </div>
-      </div>-->
+      </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
@@ -84,7 +73,7 @@
             <label for="state_name">STATE_NAME</label>
             <input type="text"
                    id="state_name"
-                   formControlName="statE_NAME"
+                   formControlName="stateName"
                    class="form-control">
           </div>
         </div>
@@ -95,7 +84,7 @@
             <label for="country_name">COUNTRY_NAME</label>
             <input type="text"
                    id="country_name"
-                   formControlName="countrY_NAME"
+                   formControlName="countryName"
                    class="form-control">
           </div>
         </div>
@@ -128,7 +117,7 @@
             <label for="business_hours">BUSINESS_HOURS</label>
             <input type="text"
                    id="business_hours"
-                   formControlName="businesS_HOURS"
+                   formControlName="businessHours"
                    class="form-control">
           </div>
         </div>

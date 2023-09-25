@@ -17,15 +17,19 @@ export class BranchItemComponent implements OnInit {
     private router: Router, private datastorage: DataStorageService) {
   }
   ngOnInit() {
-    this.branch = this.branchService.getBranch(this.branch.id);
+    
+    //console.log(this.branch.buCode5);
+    //console.log(this.index);
+    //console.log(this.branch);
   }
   onEditBranch() {
-    this.router.navigate(['branches/', this.branch.id, 'edit']);
+    console.log(this.branch.buCode5);
+    this.router.navigate(['branches/', this.branch.buCode5, 'edit']);
   }
 
   onDeleteBranch() {
-    this.branchService.deleteBranch(this.branch.id);
-    this.datastorage.deleteBranch(this.branch.id);
+    this.branchService.deleteBranch(this.branch.buCode5);
+    this.datastorage.deleteBranch(this.branch.buCode5);
     this.router.navigate(['/']);
   }
 }

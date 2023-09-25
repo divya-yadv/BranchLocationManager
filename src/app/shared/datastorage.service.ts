@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from "rxjs";
+import { Observable, map, tap } from "rxjs";
 import { BranchService } from "../branches/branches.service";
 import { Branch } from "../branches/branch.model";
 
@@ -14,9 +14,21 @@ export class DataStorageService {
       .get<Branch[]>(
         'https://localhost:7133/api/Branches'
       )
-      //.subscribe(branches=>console.log(branches)
-      //)
-      .subscribe(branches => { this.branchservice.setBranches(branches); })
+    //).pipe(
+    //  map((branches) => {
+    //    if (branches) {
+          
+    //      return new Branch({
+    //        buCode5:
+    //      });
+    //    }
+    //    throw new Error(response.errorMessage);
+    //  }),
+      .subscribe((branches) => {
+        this.branchservice.setBranches(branches);
+        console.log(branches);
+      })
+  }
 
 
     //this.http
@@ -33,40 +45,40 @@ export class DataStorageService {
 
     //  }));
 
-  }
-
-  storeBranches(branch:any) {
+  storeBranches(branch:Branch) {
     // const branches = this.branchservice.getBranches();
-    const branchid = branch.id ;
+    const branchBuCode5 = branch.buCode5 ;
    
     this.http
       .put(
-        'https://localhost:7133/api/Branches/' + branchid,
+        'https://localhost:7133/api/Branches/' + branchBuCode5,
         branch
       )
       .subscribe(response => {
+
         console.log(response);
       });
+      
   }
 
-  deleteBranch(id: number) {
+  deleteBranch(buCode5: string) {
     // const branches = this.branchservice.getBranches();
 
     this.http
       .delete(
-        'https://localhost:7133/api/Branches/' + id
+        'https://localhost:7133/api/Branches/' + buCode5
       )
       .subscribe(response => {
         console.log(response);
       });
   }
-  addBranch(Branch:any) {
+  addBranch(branch:Branch) {
     // const branches = this.branchservice.getBranches();
-
+    console.log(branch);
 
     this.http
       .post(
-        'https://localhost:7133/api/Branches', Branch
+        'https://localhost:7133/api/Branches', branch
 
       )
       .subscribe(response => {

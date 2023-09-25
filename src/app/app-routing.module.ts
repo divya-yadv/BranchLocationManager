@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   },
   { path: 'auth', component: AuthComponent },
   { path: 'branches/new', canActivate: [AuthGuard] , component: BranchEditComponent },
-  { path: 'branches/:id/edit', canActivate: [AuthGuard], component: BranchEditComponent }
+  { path: 'branches/:buCode5/edit', canActivate: [AuthGuard], component: BranchEditComponent }
  
 ];
 @NgModule({

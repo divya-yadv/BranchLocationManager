@@ -8,11 +8,12 @@ import { BranchListComponent } from './branches/branch-list/branch-list.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BranchItemComponent } from './branches/branch-item/branch-item.component';
 import { DataStorageService } from './shared/datastorage.service';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DataStorageService } from './shared/datastorage.service';
     BranchListComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    BranchItemComponent
+    BranchItemComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -1,45 +1,43 @@
 export class Branch {
-  public id: number;
-  public bU_CODE5: string;
-
-  //public OPENED_AT: string;
+  public buCode5: string;
+  public status: string;
+  public openedDt: Date;
   public address: string;
   public city: string;
-  public statE_NAME: string;
-  public countrY_NAME: string;
+  public stateName: string;
+  public countryName: string;
   public currency: string;
   public phone: string;
-  public businesS_HOURS: string;
-  public latitude: number;
+  public businessHours: string;
+  public latitude:number ;
   public longitude: number;
-
-  constructor(Id: number, BU_CODE5: string,  ADDRESS: string, CITY: string, STATE_NAME: string, COUNTRY_NAME: string, CURRENCY: string, PHONE: string, BUSINESS_HOURS: string, LATITUDE: number, LONGITUDE: number) {
-
-    this.id = Id;
-
-    this.bU_CODE5 = BU_CODE5;
-
   
 
-    //this.OPENED_AT = OPENED_AT;
+  constructor(buCode5: string, address: string, city: string, stateName: string, countryName: string, currency: string, phone: string, businessHours: string, latitude: number, longitude: number, status: string, openedDt: Date) {
 
-    this.address = ADDRESS;
+    this.buCode5 = buCode5;
 
-    this.city = CITY;
+    this.status = status;
 
-    this.statE_NAME = STATE_NAME;
+    this.openedDt = openedDt;
 
-    this.countrY_NAME = COUNTRY_NAME;
+    this.address = address;
 
-    this.currency = CURRENCY;
+    this.city = city;
 
-    this.phone = PHONE;
+    this.stateName = stateName;
 
-    this.businesS_HOURS = BUSINESS_HOURS;
+    this.countryName = countryName;
 
-    this.latitude = LATITUDE;
+    this.currency = currency;
 
-    this.longitude = LONGITUDE;
+    this.phone = phone;
+
+    this.businessHours = businessHours;
+
+    this.latitude = latitude;
+
+    this.longitude = longitude;
 
   }
 }

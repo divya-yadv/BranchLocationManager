@@ -4,6 +4,7 @@ import { tap,catchError } from "rxjs/operators";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ErrorService } from "../error.service";
 
 export interface AuthResponseData {
   email: string;
@@ -47,8 +48,8 @@ export class AuthService {
   autoLogin() {
     const userData: {
       email: string;
-    } = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (!userData || userData.email == '') {
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
       return;
     }
 
@@ -60,16 +61,18 @@ export class AuthService {
   }
   logout() {
     this.user.next(null);
-    this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
+    this.router.navigate(['/auth']);
   }
 
-    private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred!';
-    if (!errorRes.error || !errorRes.error.error) {
+  private handleError(errorRes: HttpErrorResponse) {
+    //this.errorService.printError(errorRes.error.title);
+      let errorMessage = 'An unknown error occurred!';
+      //console.log(errorRes.error.title);
+    if (!errorRes.error) {
       return throwError(errorMessage);
     }
-    switch (errorRes.error.error.message) {
+    switch (errorRes.error.title) {
       case 'EMAIL_EXISTS':
         errorMessage = 'This email exists already';
         break;

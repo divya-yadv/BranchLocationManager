@@ -16,13 +16,13 @@ export class BranchListComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.subscription = this.branchService.branchesChanged.subscribe(
-      (branches: Branch[]) => {
+      (branches) => {
         this.branches = branches;
       }
     );
     this.datastorage.fetchBranches();
     this.branches = this.branchService.getBranches();
-  
+    console.log(this.branches);
 
   }
   onNewBranch() {
@@ -35,11 +35,4 @@ export class BranchListComponent implements OnInit, OnDestroy{
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  //onBranch() {
-  //  this.datastorage.storeRecipes();
-  //  console.log(this.branches);
-  //  //this.branches = this.branchService.getBranches();
-  //}     
- 
 }
