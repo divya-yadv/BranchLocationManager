@@ -8,7 +8,6 @@ import { ErrorService } from "../error.service";
 
 export interface AuthResponseData {
   email: string;
-  registered?: boolean;
 }
 @Injectable({ providedIn: 'root' })
 export class AuthService {

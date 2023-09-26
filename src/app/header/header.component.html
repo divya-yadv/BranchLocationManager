@@ -1,8 +1,9 @@
 <nav style="background-color: #00599c;"class="navbar navbar-default m-0">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a style=" color: white; margin-left:15px;"href="#" class="navbar-brand">Fastenal</a>
+      <a style=" color: white; margin-left:15px" class="navbar-brand">Fastenal</a>
     </div>
+    
     <ul class="nav navbar-nav navbar-right" style="margin-right:50px;">
       <li *ngIf="isAuthenticated">
         <a style="cursor: pointer; color: white;" (click)="onLogout()">Logout</a>

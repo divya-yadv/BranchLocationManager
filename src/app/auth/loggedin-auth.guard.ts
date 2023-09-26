@@ -12,8 +12,8 @@ import { map, tap, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+export class LoggedInAuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -28,9 +28,9 @@ export class AuthGuard implements CanActivate {
       map(user => {
         const isAuth = !!user;
         if (isAuth) {
-          return true;
+          return this.router.createUrlTree(['/']);
         }
-        return this.router.createUrlTree(['/auth']);
+        return true;
       })
     );
   }
