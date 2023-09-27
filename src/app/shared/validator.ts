@@ -1,47 +1,31 @@
-import { FormGroup } from '@angular/forms';
+//import { AbstractControl, NG_VALIDATORS,Validator,ValidatorFn,validate } from '@angular/forms';
+//import { BranchService } from '../branches/branches.service';
+//import { Directive } from '@angular/core';
 
-const validationMessages = {
-  email: {
-    required: 'Required',
-    email: 'This email is invalid'
-  },
-  password: {
-    required: 'Required',
-    minlength: 'The password length must be greater than or equal to 8'
-  },
-  confirmPassword: {
-    required: 'Required',
-    match: 'Password does not match'
-  },
-  firstName: {
-    required: 'Required'
-  },
-  lastName: {
-    required: 'Required'
-  }
-};
+//@Directive({
+//  selector: '[UniqueBuCode]',
+//  providers: [{
+//    provide: NG_VALIDATORS,
+//    useExisting: UniqueValidateDirective,
+//    multi: true
+//  }]
+//})
 
-export class Validator {
-  validationMessages: any;
-  constructor(private validationMessage: { [key: string]: { [key: string]: string } } = validationMessages) { }
 
-  processErrorMessage(conatiner: FormGroup): { [key: string]: string } {
-    const messages = {};
-    for (const controlKey in conatiner.controls) {
-      if (conatiner.controls.hasOwnProperty(controlKey)) {
-        const controlProperty = conatiner.controls[controlKey];
-        if (this.validationMessage[controlKey]) {
-          messages[controlKey] = '';
-          if ((controlProperty.dirty || controlProperty.touched) && (controlProperty.errors)) {
-            Object.keys(controlProperty.errors).map(messageKey => {
-              if (this.validationMessages[controlKey][messageKey]) {
-                messages[controlKey] += this.validationMessage[controlKey][messageKey] + '';
-              }
-            })
-          }
-        }
-      }
-    }
-    return messages;
-  }
-}
+//export function UniqueBuCode(): ValidatorFn {
+//  return branchService.getBranch(control.value) ? { 'Error': 'Branch with this BuCode5 already exists!' } : null;
+//  return (control: AbstractControl): { [key: string]: any } | null =>
+//    control.value?.toLowerCase() === 'blue'
+//      ? null : { wrongColor: control.value };
+//}
+//export function UniqueValidateDirective implements Validator  {
+
+ 
+//  validate(control: AbstractControl): { [key: string]: any } | null { 
+   
+//    return UniqueBuCode()(control);
+//  }
+ 
+//}
+
+

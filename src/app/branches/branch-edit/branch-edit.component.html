@@ -14,11 +14,12 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="bu_code">BU_CODE5</label>
+            <label for="buCode">BU_CODE5</label>
             <input type="text"
-                   id="bu_code"
+                   id="buCode5"
                    formControlName="buCode5"
-                   class="form-control" [disabled]="editMode">
+                   class="form-control">
+            <span class="help-block" *ngIf="BranchExists(branchForm.get('buCode5').value) && !this.editMode">Branch {{buCode5}} already exists!</span>
           </div>
         </div>
       </div>
@@ -30,18 +31,6 @@
                    id="status"
                    formControlName="status"
                    class="form-control">
-            <!--<input type="radio"
-                               id="status"
-                               value="Open"
-                               formControlName="status"
-                               class="form-control">
-                        Open
-            <input type="radio"
-                               id="status"
-                               value="Closed"
-                               formControlName="status"
-                               class="form-control">
-                        Closed-->
           </div>
         </div>
       </div>
@@ -52,7 +41,11 @@
             <input type="text"
                    id="openedDt"
                    formControlName="openedDt"
-                   class="form-control">
+                   class="form-control"
+                   pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"
+                   >
+         
+            <span class="help-block" *ngIf="branchForm.get('openedDt').errors && branchForm.get('openedDt').touched">Please enter date in the format YYYY-MM-DD</span>
           </div>
         </div>
       </div>
@@ -114,13 +107,19 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
+
             <label for="phone">PHONE</label>
             <input type="text"
                    id="phone"
                    formControlName="phone"
-                   pattern="1?-?\(?[0-9]{3}[\-\)][0-9]{3}-[0-9]{4}"
-                   class="form-control">
+                   class="form-control "
+                   name="phone"
+                  
+                   >
+          
+            <span class="help-block" *ngIf="branchForm.get('phone').errors && branchForm.get('phone').touched">Please enter a valid phone number!</span>
           </div>
+          
         </div>
       </div>
       <div class="row">
@@ -159,7 +158,3 @@
     </form>
   </div>
 </div>
-
-
-has context menu
-Compose

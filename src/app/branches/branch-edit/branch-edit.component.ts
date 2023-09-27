@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataStorageService } from '../../shared/datastorage.service';
 import { BranchService } from '../branches.service';
@@ -28,27 +28,28 @@ export class BranchEditComponent implements OnInit {
   onSubmit() {
     console.log(this.branchForm.value);
     if (this.editMode) {
-      //this.branchService.updateBranch(this.buCode5, this.branchForm.value);
       this.datastorage.storeBranches(this.branchForm.value);
+      //alert(`Your branch ${this.buCode5} is updated!`);
     }
     else {
-      //this.branchService.addBranch(this.branchForm.value);
       this.datastorage.addBranch(this.branchForm.value);
+      
     }
-   
     this.onCancel();
   }
   onCancel() {
     if (!this.editMode) {
       this.router.navigate(['../../'], { relativeTo: this.route });
+     
     }
     else {
       this.router.navigate(['../../../'], { relativeTo: this.route });
+     
     }
   }
   private initForm() {
     let status = '';
-    let openedDt = new Date();
+    let openedDt;
     let address = '';
     let city = '';
     let state = '';
@@ -74,7 +75,7 @@ export class BranchEditComponent implements OnInit {
       latitude = branch.latitude;
     }
     this.branchForm = new FormGroup({
-      buCode5: new FormControl(this.buCode5, [Validators.required]),
+      buCode5: new FormControl({ value: this.buCode5, disabled: this.editMode },[Validators.required]),
       status: new FormControl(status, [Validators.required]),
       openedDt: new FormControl(openedDt, [Validators.required]),
       address: new FormControl(address, [Validators.required]),
@@ -87,5 +88,15 @@ export class BranchEditComponent implements OnInit {
       latitude: new FormControl(latitude, [Validators.required]),
       longitude: new FormControl(longitude, [Validators.required])
     });
+  }
+ 
+  public BranchExists(buCode5: string): boolean {
+    //console.log(this.branchService.getBranch(buCode5));
+    if (this.branchService.getBranch(buCode5)) {
+      return true;
+    }
+    return false;
+
+
   }
 }

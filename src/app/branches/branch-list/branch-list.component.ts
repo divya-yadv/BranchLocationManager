@@ -22,7 +22,6 @@ export class BranchListComponent implements OnInit, OnDestroy{
     );
     this.datastorage.fetchBranches();
     this.branches = this.branchService.getBranches();
-    console.log(this.branches);
 
   }
   onNewBranch() {

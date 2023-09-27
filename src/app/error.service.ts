@@ -10,12 +10,13 @@ export class ErrorService {
   setError(message: string) {
     this.lastError = message;
     this.errorChanged.next(this.lastError);
+    alert(this.lastError);
     console.log(this.lastError);
   }
   printError(message: string) {
     console.log(message);
     console.log(this.lastError);
     this.lastError = message;
-   
+    
   }
 }
