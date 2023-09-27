@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-xs-12">
     <form [formGroup]="branchForm" (ngSubmit)="onSubmit()">
@@ -31,6 +30,18 @@
                    id="status"
                    formControlName="status"
                    class="form-control">
+            <!--<input type="radio"
+                               id="status"
+                               value="Open"
+                               formControlName="status"
+                               class="form-control">
+                        Open
+            <input type="radio"
+                               id="status"
+                               value="Closed"
+                               formControlName="status"
+                               class="form-control">
+                        Closed-->
           </div>
         </div>
       </div>
@@ -107,6 +118,7 @@
             <input type="text"
                    id="phone"
                    formControlName="phone"
+                   pattern="1?-?\(?[0-9]{3}[\-\)][0-9]{3}-[0-9]{4}"
                    class="form-control">
           </div>
         </div>
@@ -147,3 +159,7 @@
     </form>
   </div>
 </div>
+
+
+has context menu
+Compose

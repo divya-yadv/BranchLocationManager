@@ -4,9 +4,14 @@ import { Subject } from "rxjs";
 
 @Injectable({ providedIn:'root' })
 export class ErrorService {
-  lastError: string;
+  lastError: string='Start Error';
+  errorChanged = new Subject<string>();
 
-
+  setError(message: string) {
+    this.lastError = message;
+    this.errorChanged.next(this.lastError);
+    console.log(this.lastError);
+  }
   printError(message: string) {
     console.log(message);
     console.log(this.lastError);

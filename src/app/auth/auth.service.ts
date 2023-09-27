@@ -66,20 +66,25 @@ export class AuthService {
 
   private handleError(errorRes: HttpErrorResponse) {
     //this.errorService.printError(errorRes.error.title);
-      let errorMessage = 'An unknown error occurred!';
-      //console.log(errorRes.error.title);
+    let errorMessage = 'An unknown error occurred!';
+
+    console.log(errorRes);
+
     if (!errorRes.error) {
       return throwError(errorMessage);
     }
-    switch (errorRes.error.title) {
-      case 'EMAIL_EXISTS':
+    if (errorRes.status == 500) {
+      return throwError("Internal Server Error");
+    }
+    switch (Object.keys(errorRes.error)[0]) {
+      case 'DuplicateUserName':
         errorMessage = 'This email exists already';
         break;
       case 'EMAIL_NOT_FOUND':
         errorMessage = 'This email does not exist.';
         break;
       case 'INVALID_PASSWORD':
-        errorMessage = 'This password is not correct.';
+        errorMessage = 'This password is incorrect.';
         break;
     }
     return throwError(errorMessage);

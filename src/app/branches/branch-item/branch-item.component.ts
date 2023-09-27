@@ -29,7 +29,7 @@ export class BranchItemComponent implements OnInit {
 
   onDeleteBranch() {
 
-    this.branchService.deleteBranch(this.branch.buCode5);
+    //this.branchService.deleteBranch(this.branch.buCode5);
     this.datastorage.deleteBranch(this.branch.buCode5);
     this.router.navigate(['/']);
   }

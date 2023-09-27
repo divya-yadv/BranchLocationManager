@@ -4,26 +4,32 @@ import { Observable, map, tap } from "rxjs";
 import { BranchService } from "../branches/branches.service";
 import { Branch } from "../branches/branch.model";
 
+
+
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
 
+
+
   constructor(private http: HttpClient, private branchservice: BranchService) { }
+
+
 
   fetchBranches() {
     this.http
       .get<Branch[]>(
         'https://localhost:7133/api/Branches'
       )
-    //).pipe(
-    //  map((branches) => {
-    //    if (branches) {
-          
-    //      return new Branch({
-    //        buCode5:
-    //      });
-    //    }
-    //    throw new Error(response.errorMessage);
-    //  }),
+      //).pipe(
+      //  map((branches) => {
+      //    if (branches) {
+
+      //      return new Branch({
+      //        buCode5:
+      //      });
+      //    }
+      //    throw new Error(response.errorMessage);
+      //  }),
       .subscribe((branches) => {
         this.branchservice.setBranches(branches);
         console.log(branches);
@@ -31,57 +37,76 @@ export class DataStorageService {
   }
 
 
-    //this.http
-    //  .get < Branch[]>(
-    //    'https://localhost:7133/api/Branches'
-    //  )
-    //  .pipe(
-    //    map(branches => {
-    //      return branches
 
-    //    }),
-    //  tap(branches => {
-    //    this.branchservice.setBranches(branches);
 
-    //  }));
 
-  storeBranches(branch:Branch) {
+  //this.http
+  //  .get < Branch[]>(
+  //    'https://localhost:7133/api/Branches'
+  //  )
+  //  .pipe(
+  //    map(branches => {
+  //      return branches
+
+
+
+  //    }),
+  //  tap(branches => {
+  //    this.branchservice.setBranches(branches);
+
+
+
+  //  }));
+
+
+
+  storeBranches(branch: Branch) {
     // const branches = this.branchservice.getBranches();
-    const branchBuCode5 = branch.buCode5 ;
-   
+    const branchBuCode5 = branch.buCode5;
+
     this.http
       .put(
         'https://localhost:7133/api/Branches/' + branchBuCode5,
         branch
       )
-      .subscribe(response => {
+      .subscribe(branch => {
+        this.branchservice.updateBranch(branchBuCode5, branch);
+      }
+      );
 
-        console.log(response);
-      });
-      
   }
+
+
 
   deleteBranch(buCode5: string) {
     // const branches = this.branchservice.getBranches();
+
+
 
     this.http
       .delete(
         'https://localhost:7133/api/Branches/' + buCode5
       )
       .subscribe(response => {
+        this.branchservice.deleteBranch(buCode5);
         console.log(response);
       });
   }
-  addBranch(branch:Branch) {
+  addBranch(branch: Branch) {
     // const branches = this.branchservice.getBranches();
     console.log(branch);
+
+
 
     this.http
       .post(
         'https://localhost:7133/api/Branches', branch
 
+
+
       )
       .subscribe(response => {
+        this.branchservice.addBranch(response);
         console.log(response);
       });
   }

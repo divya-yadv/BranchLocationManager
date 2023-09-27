@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 import { OnDestroy } from '@angular/core';
 import { AlertComponent } from '../shared/alert/alert.component';
+import { ErrorService } from '../error.service';
 
 @Component({
   selector: 'app-auth',
@@ -22,7 +23,9 @@ export class AuthComponent implements OnDestroy {
   private closeSub: Subscription;
   constructor(private authService: AuthService,
     private router: Router,
-    private componentFactoryResolver: ComponentFactoryResolver) { }
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private errorService: ErrorService
+  ) { }
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -52,8 +55,9 @@ export class AuthComponent implements OnDestroy {
       errorMessage => {
         console.log(errorMessage);
         this.error = errorMessage;
-        this.showErrorAlert(errorMessage);
+        this.errorService.setError(errorMessage);
         this.isLoading = false;
+        this.showErrorAlert(errorMessage);
       }
     );
 

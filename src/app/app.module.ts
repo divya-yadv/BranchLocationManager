@@ -15,6 +15,7 @@ import { BranchItemComponent } from './branches/branch-item/branch-item.componen
 import { DataStorageService } from './shared/datastorage.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     LoadingSpinnerComponent,
     BranchItemComponent,
     AlertComponent,
-    PlaceholderDirective
+    PlaceholderDirective,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

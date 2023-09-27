@@ -28,11 +28,11 @@ export class BranchEditComponent implements OnInit {
   onSubmit() {
     console.log(this.branchForm.value);
     if (this.editMode) {
-      this.branchService.updateBranch(this.buCode5, this.branchForm.value);
+      //this.branchService.updateBranch(this.buCode5, this.branchForm.value);
       this.datastorage.storeBranches(this.branchForm.value);
     }
     else {
-      this.branchService.addBranch(this.branchForm.value);
+      //this.branchService.addBranch(this.branchForm.value);
       this.datastorage.addBranch(this.branchForm.value);
     }
    

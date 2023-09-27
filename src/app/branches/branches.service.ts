@@ -25,13 +25,13 @@ export class BranchService  {
     return this.branches.filter(branch => branch.buCode5 == buCode5 )[0];
   }
 
-  addBranch(Branch: Branch) {
+  addBranch(Branch) {
     this.branches.push(Branch);
     this.branchesChanged.next(this.branches.slice());
     console.log(this.branches);
   }
 
-  updateBranch(buCode5: string, newBranch: Branch) {
+  updateBranch(buCode5: string, newBranch) {
     let index = this.branches.findIndex(branch => branch.buCode5 == buCode5);
     this.branches[index] = newBranch;
     this.branchesChanged.next(this.branches.slice());
