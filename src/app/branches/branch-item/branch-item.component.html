@@ -1,10 +1,14 @@
 
 <td scope="col">{{branch.buCode5}}</td>
 <td scope="col">{{branch.status}}</td>
-<td scope="col">{{branch.openedDt}}</td>
-<td scope="col">{{branch.address}},{{branch.city}},{{branch.stateName}},{{branch.countryName}}</td>
+<td scope="col">{{openedDtDate}}</td>
+<td scope="col">{{branch.address}}</td>
+<td scope="col">{{branch.city}}</td>
+<td scope="col">{{branch.stateName}}</td>
+<td scope="col">{{branch.countryName}}</td>
 <td scope="col">{{branch.currency}}</td>
 <td scope="col">{{branch.phone}}</td>
+<td scope="col">{{branch.businessHours}}</td>
 <td scope="col" class="text-start">{{branch.latitude}}</td>
 <td scope="col" class="text-start">{{branch.longitude}}</td>
 <td scope="col"><button class="btn btn-primary btn-sm" style="cursor: pointer;" (click)="onEditBranch()">Edit</button></td>

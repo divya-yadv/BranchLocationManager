@@ -37,7 +37,7 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     HttpClientModule
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS,
+    provide: [HTTP_INTERCEPTORS],
     useClass: AuthInterceptorService,
     multi: true
   }, DataStorageService],

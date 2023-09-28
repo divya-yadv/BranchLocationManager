@@ -17,16 +17,18 @@ export class DataStorageService {
         this.branchservice.setBranches(branches);
       })
   }
-  storeBranches(branch: Branch) {
-    const branchBuCode5 = branch.buCode5;
+  updateBranch(branch) {
     this.http
       .put(
-        'https://localhost:7133/api/Branches/' + branchBuCode5,
+        'https://localhost:7133/api/Branches/' + branch.buCode5,
         branch
       )
-      .subscribe(branch => {
-        this.branchservice.updateBranch(branchBuCode5, branch);
-        alert(`Your branch ${branchBuCode5} is updated!`);
+      .subscribe(updatedBranch => {
+        this.branchservice.updateBranch(branch.buCode5, branch);
+        setTimeout(() => {
+          alert(`Your branch ${branch.buCode5} is updated!`);
+        }, 500);
+       
       }
       );
   }
@@ -39,7 +41,9 @@ export class DataStorageService {
     )
       .subscribe(response => {
         this.branchservice.deleteBranch(buCode5);
-        alert(`Your branch ${buCode5} is deleted!`)
+        setTimeout(() => {
+          alert(`Your branch ${buCode5} is deleted!`)
+        }, 500);
       });
   }
   addBranch(branch: Branch) {

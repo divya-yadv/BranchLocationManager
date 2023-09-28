@@ -18,9 +18,6 @@ export class BranchService  {
   }
 
   getBranch(buCode5: string) {
-    console.log(buCode5);
-    console.log(this.branches);
-    //console.log(this.branches.filter(branch => branch.buCode5 == buCode5)[0]);
     return this.branches.filter(branch => branch.buCode5 == buCode5 )[0];
   }
 

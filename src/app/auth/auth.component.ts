@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 import { OnDestroy } from '@angular/core';
 import { AlertComponent } from '../shared/alert/alert.component';
-import { ErrorService } from '../error.service';
 
 @Component({
   selector: 'app-auth',
@@ -24,10 +23,10 @@ export class AuthComponent implements OnDestroy {
   constructor(private authService: AuthService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private errorService: ErrorService
   ) { }
-  onSwitchMode() {
+  onSwitchMode(authForm: NgForm) {
     this.isLoginMode = !this.isLoginMode;
+    authForm.onReset();
   }
   onSubmit(form: NgForm) {
     if (!form.valid) {
@@ -53,10 +52,8 @@ export class AuthComponent implements OnDestroy {
       },
       errorMessage => {
         this.error = errorMessage;
-        this.errorService.setError(errorMessage);
         this.isLoading = false;
         this.showErrorAlert(errorMessage);
-        //alert(errorMessage);
       }
     );
 

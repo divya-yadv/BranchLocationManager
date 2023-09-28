@@ -34,10 +34,9 @@
                ngModel
                #email="ngModel"
                required
-               pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
                email />
-       <span class="help-block" *ngIf="email.touched && email.invalid"> Email address is not valid. </span>
-      
+        <span class="help-block" *ngIf="email.touched && email.invalid"> Email address is not valid. </span>
+
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -49,9 +48,9 @@
                #password="ngModel"
                required
                minlength="6"
-               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,}"
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$"
                />
-        <span class="help-block" [hidden]="password.valid && !password.touched " >
+        <span class="help-block" *ngIf="password.touched && password.invalid">
           Password must contain at least one number, one uppercase and a lowercase letter
           and at least 6 characters
         </span>
@@ -63,7 +62,7 @@
           {{ isLoginMode ? 'Login' : 'Sign Up' }}
         </button>
         |
-        <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+        <button class="btn btn-primary" (click)="onSwitchMode(authForm)" type="button">
           Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
         </button>
       </div>

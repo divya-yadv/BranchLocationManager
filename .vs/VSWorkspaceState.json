@@ -1,16 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src",
-    "\\src\\app",
-    "\\src\\app\\auth",
-    "\\src\\app\\branches",
-    "\\src\\app\\branches\\branch-item",
-    "\\src\\app\\header",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\alert",
-    "\\src\\app\\shared\\placeholder"
+    ""
   ],
-  "SelectedNode": "\\src\\app\\branches\\branch-edit\\branch-edit.component.html",
+  "SelectedNode": "\\C:\\Users\\di\\source\\repos\\BranchLocationManager",
   "PreviewInSolutionExplorer": false
 }

@@ -4,7 +4,6 @@ import { tap,catchError } from "rxjs/operators";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ErrorService } from "../error.service";
 
 export interface AuthResponseData {
   email: string;
@@ -76,12 +75,22 @@ export class AuthService {
       case 'DuplicateUserName':
         errorMessage = 'This email exists already';
         break;
+      case 'PasswordRequiresDigit':
+        errorMessage = "Passwords must have at least one digit ('0'-'9').";
+        break;
+      case 'PasswordRequiresUpper':
+        errorMessage = "Passwords must have at least one uppercase ('A'-'Z').";
+        break;
+      case 'PasswordRequiresNonAlphanumeric':
+        errorMessage = "Passwords must have at least one non alphanumeric character.";
+        break;
       case 'EMAIL_NOT_FOUND':
         errorMessage = 'This email does not exist.';
         break;
       case 'INVALID_PASSWORD':
         errorMessage = 'This password is incorrect.';
         break;
+      
     }
     return throwError(errorMessage);
   }

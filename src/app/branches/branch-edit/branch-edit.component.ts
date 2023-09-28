@@ -26,10 +26,8 @@ export class BranchEditComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.branchForm.value);
     if (this.editMode) {
-      this.datastorage.storeBranches(this.branchForm.value);
-      //alert(`Your branch ${this.buCode5} is updated!`);
+      this.datastorage.updateBranch(this.branchForm.value);
     }
     else {
       this.datastorage.addBranch(this.branchForm.value);
@@ -49,7 +47,7 @@ export class BranchEditComponent implements OnInit {
   }
   private initForm() {
     let status = '';
-    let openedDt;
+    let openedDt=new Date();
     let address = '';
     let city = '';
     let state = '';
@@ -75,7 +73,7 @@ export class BranchEditComponent implements OnInit {
       latitude = branch.latitude;
     }
     this.branchForm = new FormGroup({
-      buCode5: new FormControl({ value: this.buCode5, disabled: this.editMode },[Validators.required]),
+      buCode5: new FormControl(this.buCode5, [Validators.required]),
       status: new FormControl(status, [Validators.required]),
       openedDt: new FormControl(openedDt, [Validators.required]),
       address: new FormControl(address, [Validators.required]),
@@ -91,7 +89,6 @@ export class BranchEditComponent implements OnInit {
   }
  
   public BranchExists(buCode5: string): boolean {
-    //console.log(this.branchService.getBranch(buCode5));
     if (this.branchService.getBranch(buCode5)) {
       return true;
     }

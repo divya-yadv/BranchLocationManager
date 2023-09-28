@@ -15,10 +15,14 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="buCode">BU_CODE5</label>
-            <input type="text"
-                   id="buCode5"
-                   formControlName="buCode5"
-                   class="form-control">
+            <fieldset [disabled]="this.editMode">
+              <input type="text"
+                     id="buCode5"
+                     formControlName="buCode5"
+                     class="form-control"
+                     >
+            </fieldset>
+           
             <span class="help-block" *ngIf="BranchExists(branchForm.get('buCode5').value) && !this.editMode">Branch {{buCode5}} already exists!</span>
           </div>
         </div>
@@ -38,13 +42,10 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="openedDt">OPENED_DT</label>
-            <input type="text"
+            <input type="datetime-local"
                    id="openedDt"
                    formControlName="openedDt"
-                   class="form-control"
-                   pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"
-                   >
-         
+                   class="form-control">
             <span class="help-block" *ngIf="branchForm.get('openedDt').errors && branchForm.get('openedDt').touched">Please enter date in the format YYYY-MM-DD</span>
           </div>
         </div>
@@ -114,7 +115,8 @@
                    formControlName="phone"
                    class="form-control "
                    name="phone"
-                  
+                   
+                  pattern="1?-?\(?[0-9]{3}[\-\)][0-9]{3}-[0-9]{4}"
                    >
           
             <span class="help-block" *ngIf="branchForm.get('phone').errors && branchForm.get('phone').touched">Please enter a valid phone number!</span>

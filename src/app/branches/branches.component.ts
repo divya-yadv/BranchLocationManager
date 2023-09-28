@@ -9,11 +9,11 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './branches.component.html',
   styleUrls: ['./branches.component.css']
 })
-export class BranchesComponent implements OnInit{
+export class BranchesComponent implements OnInit {
   isLoggedIn: boolean = false;
   constructor(private authService: AuthService) { }
   ngOnInit() {
-     this.isLoggedIn = !!this.authService.user;
+    this.isLoggedIn = !!this.authService.user;
   }
 
 }
